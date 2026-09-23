@@ -24,7 +24,7 @@ app.use(responseMiddleware);
 app.use("/api", appRoute);
 
 app.get("/", (req, res) => {
-  res.send({ message: "Node day 7" });
+  res.send({ message: "Node day 8" });
 });
 
 app.listen(port, () => {
