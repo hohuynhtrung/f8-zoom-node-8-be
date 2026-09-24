@@ -19,7 +19,12 @@ function backupDB() {
       fs.mkdirSync(backupDir, { recursive: true });
     }
 
-    const timestamp = new Date().toISOString().replace(/[:.]/g, "-");
+    const now = new Date();
+    const vnTime = new Date(now.getTime() + 7 * 60 * 60 * 1000);
+    const timestamp = vnTime
+      .toISOString()
+      .replace(/[:.]/g, "-")
+      .replace("Z", "");
     const fileName = `${process.env.DB_NAME}-${timestamp}.sql`;
     const outputFile = path.join(backupDir, fileName);
     const outputStream = fs.createWriteStream(outputFile);
